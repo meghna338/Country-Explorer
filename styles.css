@@ -340,6 +340,7 @@ a { color: var(--primary); }
 
 /* ---------- Modal ---------- */
 .modal { position: fixed; inset: 0; z-index: 50; display: grid; place-items: center; padding: 20px; }
+.modal[hidden] { display: none; }
 .modal-backdrop {
   position: absolute;
   inset: 0;
