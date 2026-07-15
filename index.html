@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Atlas · Country Explorer</title>
+  <meta name="description" content="Explore every country in the world — flags, population, capitals and more." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#" aria-label="Atlas home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M3 12h18M12 3c2.5 2.5 3.8 5.7 3.8 9s-1.3 6.5-3.8 9c-2.5-2.5-3.8-5.7-3.8-9S9.5 5.5 12 3Z" stroke="currentColor" stroke-width="1.8"/>
+          </svg>
+        </span>
+        <span class="brand-text">Atlas<span class="brand-sub">Country Explorer</span></span>
+      </a>
+      <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">
+        <span class="theme-icon-light">☀︎</span>
+        <span class="theme-icon-dark">☾</span>
+        <span class="theme-label">Theme</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <h1>Explore the world, one country at a time.</h1>
+      <p class="hero-sub">Search any country to see its flag, capital, population and more — powered by live data.</p>
+    </div>
+  </section>
+
+  <!-- Controls -->
+  <section class="controls">
+    <div class="container controls-inner">
+      <div class="search-wrap">
+        <span class="search-icon" aria-hidden="true">⌕</span>
+        <input id="searchInput" type="search" placeholder="Search for a country…" autocomplete="off" aria-label="Search for a country" />
+      </div>
+      <div class="filters">
+        <select id="regionFilter" aria-label="Filter by region">
+          <option value="">All regions</option>
+          <option value="Africa">Africa</option>
+          <option value="Americas">Americas</option>
+          <option value="Asia">Asia</option>
+          <option value="Europe">Europe</option>
+          <option value="Oceania">Oceania</option>
+          <option value="Antarctic">Antarctic</option>
+        </select>
+        <select id="sortBy" aria-label="Sort countries">
+          <option value="name-asc">Name (A–Z)</option>
+          <option value="name-desc">Name (Z–A)</option>
+          <option value="pop-desc">Population (high→low)</option>
+          <option value="pop-asc">Population (low→high)</option>
+        </select>
+        <button id="favToggle" class="fav-toggle" aria-pressed="false">
+          <span aria-hidden="true">★</span> Favorites
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Results meta -->
+  <div class="container">
+    <p id="resultsMeta" class="results-meta" aria-live="polite"></p>
+  </div>
+
+  <!-- Grid -->
+  <main class="container">
+    <div id="grid" class="grid" aria-live="polite"></div>
+    <div id="emptyState" class="empty-state" hidden>
+      <p class="empty-emoji" aria-hidden="true">🗺️</p>
+      <p class="empty-title">No countries found</p>
+      <p class="empty-text">Try a different search term or clear the filters.</p>
+    </div>
+    <div id="errorState" class="empty-state" hidden>
+      <p class="empty-emoji" aria-hidden="true">⚠️</p>
+      <p class="empty-title">Something went wrong</p>
+      <p class="empty-text">We couldn't load country data. Please check your connection and try again.</p>
+      <button id="retryBtn" class="btn-primary">Retry</button>
+    </div>
+  </main>
+
+  <!-- Detail modal -->
+  <div id="modal" class="modal" hidden>
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" data-close aria-label="Close">✕</button>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Atlas · Country Explorer — country data from <a href="https://github.com/mledoze/countries" target="_blank" rel="noopener">mledoze/countries</a> &amp; <a href="https://github.com/samayo/country-json" target="_blank" rel="noopener">samayo/country-json</a>, flags from <a href="https://flagcdn.com" target="_blank" rel="noopener">flagcdn.com</a>.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
